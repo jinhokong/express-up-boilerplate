@@ -1,0 +1,7 @@
+{
+  "name": "apollo-express-example",
+  "profile": "default",
+  "regions": [
+    "ap-northeast-2"
+  ]
+}
