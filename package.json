@@ -1,0 +1,26 @@
+{
+  "name": "apollo-express-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jinhokong/express-up-boilerplate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jinhokong/express-up-boilerplate/issues"
+  },
+  "homepage": "https://github.com/jinhokong/express-up-boilerplate#readme",
+  "dependencies": {
+    "apollo-server": "^2.0.5",
+    "apollo-server-express": "^2.0.4",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2"
+  }
+}

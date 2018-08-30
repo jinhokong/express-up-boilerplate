@@ -1,26 +1,38 @@
-const express = require('express');
-const { registerServer } = require('apollo-server-express');
-const { ApolloServer, gql } = require('apollo-server');
- 
-// Construct a schema, using GraphQL schema language
+const { ApolloServer, gql } = require('apollo-server-express');
+const express = require("express");
+const { PORT = 3000 } = process.env
+const app =  express();
+
+
 const typeDefs = gql`
+   type Test {
+    obj: String
+    arg: String
+    context:String
+    info:String
+  }
+
   type Query {
-    hello: String
+    TestQuery(t:Int!): Test
   }
 `;
- 
-// Provide resolver functions for your schema fields
+
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+    TestQuery: (obj,arg,context,info) => {
+      return {
+        obj:JSON.stringify(obj),
+        info:JSON.stringify(info),
+        arg:JSON.stringify(arg),
+        context:JSON.stringify(context)
+      }
+    },
   },
 };
- 
+
 const server = new ApolloServer({ typeDefs, resolvers });
- 
-const app = express();
-registerServer({ server, app });
- 
-server.listen().then(({ url }) => {
-  console.log(`🚀 Server ready at ${url}`);
-});
+
+server.applyMiddleware({ app }); 
+app.listen({ port: PORT }, () =>
+  console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`)
+)
